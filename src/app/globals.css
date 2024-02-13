@@ -2,32 +2,56 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+/* custom .link class added to tailwind  */
+@layer components {
+    .link {
+        @apply cursor-pointer hover:underline;
+    }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+.popoverLink{
+    position: relative;
+}
+.popoverLink .popoverlayout{
+    position: absolute;
+    width: 8rem;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 3.5rem;
+    z-index: 40;
+    background-color: aliceblue;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    opacity: 0;
+    visibility: hidden;
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+.popoverLink:hover .popoverlayout{
+    opacity: 1;
+    visibility: visible;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.popoverLink .popoverlayout .popoverItem{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.popoverLink .popoverlayout .popoverItem button{
+    width: 80%;
+    background-color: #facc15;
+    padding: 0.5rem, auto;
+    color: black;
+    border-radius: 0.5rem;
+}
+.popoverLink .popoverlayout .popoverItem button:hover{
+    background-color: #eab308;
+}
+.popoverItem::before {
+    position: absolute;
+    left: 50%;
+    bottom: 3.2rem;
+    transform: translateX(-50%);
+    content: "";
+    border: 1rem solid;
+    border-color: transparent transparent aliceblue;
 }
