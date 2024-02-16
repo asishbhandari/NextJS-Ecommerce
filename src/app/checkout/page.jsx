@@ -1,23 +1,49 @@
 'use client'
 import { useSelector, useDispatch } from "react-redux";
-import{addToCart, removeFromCart, decrementItemQuantity} from "../../lib/features/cartSlice"
+import { addToCart, removeFromCart, decrementItemQuantity } from "../../lib/features/cartSlice"
 import Navigation from "../../component/navigation";
 import { useRouter } from "next/navigation";
 import { FaStar } from "react-icons/fa6";
 import { PiCurrencyInrBold } from "react-icons/pi";
 import { IoMdCheckmarkCircle } from "react-icons/io";
+import { useSession, signIn } from "next-auth/react"
+import { loadStripe } from '@stripe/stripe-js';
+import axios from "axios";
+
+const stripePromise = loadStripe(
+    process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+  );
 
 export default function Checkout() {
     const router = useRouter();
+    const { data, status } = useSession();
     const cartItems = useSelector((state) => state.cart.items)
-    const totalQuanty = cartItems.reduce((total, item)=> total + item.quantity,0)
-    const totalCost = cartItems.reduce((total,item)=> total + item.price*50*item.quantity, 0)
-    const dispatch= useDispatch();
-    const handleDecrementQuantity =()=>{
+    const totalQuanty = cartItems.reduce((total, item) => total + item.quantity, 0)
+    const totalCost = cartItems.reduce((total, item) => total + item.price*item.quantity, 0)
+    const dispatch = useDispatch();
+    const handleDecrementQuantity = () => {
         return
     }
+
+    const handlePaymentRequest =async()=>{
+        const stripe= await stripePromise
+
+        // request to checkout session api
+        const checkoutSession= await axios.post('/api/checkout_session',
+        {
+            items: cartItems,
+            email: data.user.email
+        });
+
+        const result =await stripe.redirectToCheckout({
+            sessionId: checkoutSession.data.id,
+        })
+
+        if(result.error) alert(result.error.message)
+    }
+    
     return (
-        <div className="bg-gray-100 ">
+        <div className="bg-gray-100  h-screen">
             <Navigation />
             <div className="mx-auto h-52 lg:h-96 md:h-72">
                 <img src="/amaprime2.png" alt="primeimage" className="w-full h-full object-contain" />
@@ -28,7 +54,7 @@ export default function Checkout() {
                         <div className="max-w-screen-2xl mx-auto p-4">
                             <div className="flex w-full text-xl font-bold justify-center border-b-2 border-slate-200 pb-2">Your shopping Cart</div>
                             <div className="flex flex-col md:flex-row w-full">
-                                <div className="grow">
+                                <div className="w-3/4">
                                     {
                                         cartItems.map((item, i) => (
                                             <div key={i * 20 + 1} className="grid grid-cols-5 bg-white m-3 p-3">
@@ -44,7 +70,7 @@ export default function Checkout() {
                                                     <p className="line-clamp-2 py-1">{item.description}</p>
                                                     <div className="flex gap-2">
                                                         <span
-                                                            onClick={item.quantity>1 ?()=> dispatch(decrementItemQuantity(item)): handleDecrementQuantity }
+                                                            onClick={item.quantity > 1 ? () => dispatch(decrementItemQuantity(item)) : handleDecrementQuantity}
                                                             className="w-7 h-7 rounded-full border border-slate-300 text-center 
                                                             text-lg cursor-pointer">-
                                                         </span>
@@ -53,12 +79,12 @@ export default function Checkout() {
                                                             {item?.quantity}
                                                         </span>
                                                         <span
-                                                            onClick={()=> dispatch(addToCart(item))}
+                                                            onClick={() => dispatch(addToCart(item))}
                                                             className="w-7 h-7 rounded-full border border-slate-300 text-center 
                                                             text-lg cursor-pointer">+
                                                         </span>
-                                                        <span 
-                                                            onClick={()=> dispatch(removeFromCart(item))}
+                                                        <span
+                                                            onClick={() => dispatch(removeFromCart(item))}
                                                             className=" text-md border-l-2 border-slate-300 ml-4 pl-3 cursor-pointer hover:text-slate-300">
                                                             Delete
                                                         </span>
@@ -68,27 +94,44 @@ export default function Checkout() {
                                                     <p className=" text-sm text-gray-500 text-end mb-0 ">Price</p>
                                                     <p className="flex items-center justify-end">
                                                         <span><PiCurrencyInrBold /></span>
-                                                        <span>{item.price * 50}</span>
+                                                        <span>{item.price}</span>
                                                     </p>
                                                 </div>
                                             </div>
                                         ))
                                     }
                                 </div>
-                                <div className="w-3/4 m-3 bg-white p-3 flex flex-col">
+                                <div className="w-1/4 m-3 bg-white p-3 flex flex-col">
                                     <div className="flex">
-                                        <IoMdCheckmarkCircle className=" text-green-600 w-8 h-8 p-1"/>
+                                        <IoMdCheckmarkCircle className=" text-green-600 w-8 h-8 p-1" />
                                         <div className="flex flex-col">
                                             <span className="text-sm text-green-600 ">Your order is eligible for FREE Delivery.</span>
                                             <span className="text-xs">Select this option at checkout.</span>
                                         </div>
                                     </div>
                                     <div className=" mt-6 flex items-center">
-                                        <span className="pr-2">{`Subtotal (${totalQuanty} items) :`}</span> 
+                                        <span className="pr-2">{`Subtotal (${totalQuanty} items) :`}</span>
                                         <PiCurrencyInrBold />
                                         <span className="font-bold text-lg">{` ${totalCost}`}</span>
                                     </div>
-                                    <button className="bg-yellow-400 active:bg-yellow-500 my-2 rounded-md text-sm p-2">Proceed to checkout</button>
+                                    {
+                                        data ? 
+                                        // <form action="../api/checkout_session" method="POST">
+                                            <button
+                                                onClick={handlePaymentRequest}
+                                                role="link"
+                                                className="button">
+                                                Proceed To Checkout
+                                            </button>
+                                        // </form>
+                                            :
+                                        <button
+                                            onClick={signIn}
+                                            className="button">
+                                            SignIn To Proceed
+                                        </button>
+                                    }
+
                                 </div>
                             </div>
                         </div>

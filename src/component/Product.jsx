@@ -21,7 +21,7 @@ export default function Product({product}){
             <p className="text-md text-center line-clamp-1 mt-2"> {product.title}</p>
             <p className="flex items-center">
                 <span><PiCurrencyInrBold /></span> 
-                <span>{product.price *50}</span>
+                <span>{product.price*50}</span>
             </p>
             <div className="flex mb-2"> {Array(Math.floor(product.rating.rate)).fill().map((a,i) =>(
                     <FaStar className="text-yellow-500" key={i}/>  
@@ -30,8 +30,7 @@ export default function Product({product}){
             <p className="line-clamp-2">{product.description}</p>
             <button 
                 onClick={addItemToCart}
-                className="rounded-md bg-yellow-400 p-2 text-xm md:text-sm bg-gradient-to-b 
-                from-yellow-200 to-yellow-400 active:from-yellow-500">Add To Cart</button>
+                className="button">Add To Cart</button>
         </div>
     )
 }

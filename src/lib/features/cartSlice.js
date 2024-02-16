@@ -14,6 +14,8 @@ export const cartSlice= createSlice({
                 const startQuan=1
                 const additem = action.payload;
                 additem.quantity =startQuan;
+                const newPrice= additem.price*50;
+                additem.price= newPrice;
                 state.items.push(additem);
             }
             else{

@@ -7,8 +7,14 @@
     .link {
         @apply cursor-pointer hover:underline;
     }
+    .button {
+        @apply rounded-md bg-yellow-400 p-2 text-xs md:text-sm bg-gradient-to-b 
+        from-yellow-200 to-yellow-400 active:from-yellow-500
+    }
 }
-
+body p{
+    margin-bottom: 0;
+}
 .popoverLink{
     position: relative;
 }
@@ -38,10 +44,7 @@
 }
 .popoverLink .popoverlayout .popoverItem button{
     width: 80%;
-    background-color: #facc15;
-    padding: 0.5rem, auto;
     color: black;
-    border-radius: 0.5rem;
 }
 .popoverLink .popoverlayout .popoverItem button:hover{
     background-color: #eab308;
@@ -49,7 +52,7 @@
 .popoverItem::before {
     position: absolute;
     left: 50%;
-    bottom: 3.2rem;
+    bottom: 4rem;
     transform: translateX(-50%);
     content: "";
     border: 1rem solid;

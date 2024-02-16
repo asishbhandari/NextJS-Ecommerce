@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "ecommerce-localmart",
+  "private_key_id": "775164e3f51e3741ba07caded1817a12eb9655a5",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvgIBADANBgkqhkiG9w0BAQEFAASCBKgwggSkAgEAAoIBAQDYAa4DYuDuez4G\n66vJLebO2Y3hHmKbeCkzXIuy1Prq0aiIONTDyrZrLgoEw4N2SwuaogrZ+ic9fnt0\nzBMXmIYtJfsArCoJzcGisqN8VyiWgEzZpkhPWRJOeePEej5+Ob22h0jfjPF/B1rk\n4bQkBrrrBNlUaGFaYREU4zq3JdGZDo5oOc7VAEGfcY8pmx12Yt9TenbFFwxmMMS3\nlQzZwAJ8g5iS1/JJuYOUk2jmcJspXwTjMG23u21sURbm/evSRC55gsufIn/8uqc3\nHYKCV8epVNpRZU1sLehWdMqY5mImCm5l/5SLT64RQUl/EDsOnM9yqIEpNWUarwaW\nt1xSPP2rAgMBAAECggEAEGD+oLOBTZpuV2uZXA9GxOdXZcfxcpgUiUt6k4KozOA9\nWkImh/rs0bwgKfPogDJfXK6Ho7dFltkdyi5xqCr6Yzc4QCw0OwgTp1Jj9fKzjJRW\nWQ6akkG1X9ph1fnuMSrc4srntxb8Q0ViGm1IeCh2fFZvlrUcSxRSWkLpc3SPq+Sv\njgzyo5yffgEuJ2ZZo6kaYUufmiaKZqZ6NkCZCS8KNqWtR8SNI0KFXSPrFuTdGeUQ\nxER/wti5Vu/gv4ccuybdF8ltW7Gc+ZJ+b4vXIWxUPOuJbTraDh6JqcZq7Gjp7f1q\nJezDD0Rv0vrFVcA/Qssw4Da6/pW4k+HGkqSpVvJtgQKBgQD4NKz0bRBt4Zmnf0O9\nvhqFZH+eAKjXQuHPCAaKRmtO70myypVoa5CNTCdm+304BeIh5UeUN8DJrjc0adGK\nLFVYbieYen4Hc34nLs7y6NW2zNQ2PMpL5vuEI5qcFxsVi1jUQrONTtdhS+M1soON\nNVMOJQJKnJzxt+rB/C7mUaBhQQKBgQDeyiesKwBZDScOHg9Sl9ykHZc4s0ypz2gY\nkLLS44aj8sdaGfjIqhM2CPixtTZgwsERsvOS2CiU5y2xb5H6EXn8oxKmBBYW4m0j\n87UH+i22K9uhRPwOa9TCFaY1PmkFggKwuay5JdmJEEgAln2Fzxsj9xKHVv456kuj\nEkX8jK736wKBgE2LT3mx1U8vC21MEmLmUKzaIBDCDf3qtFeVH032ADKSCcllB1av\nPGMYprrC2XU2SVbjpgBFhuK7nh2u7bsobKWLDK3Tnyo+x+v/8MHtQk+xIJ+tUFp0\nWKII6ZXYliqd9WujRytftWR9bAfrtLPaNA+YOmYLFfFiz2I5ooFsgRnBAoGBAMnb\nGdTpZThKLW+iFrn7tELSOLh74+Mbc7KGMC/ZTJ1xE+R0EbAmQJ+9wy6oBGvpKSsT\nG5OZ3DMFvqW8c+PCP+eCDRx0KVt0rfRcFFL0/sPGuwlESqf6VVvAZ8ZoFJmT8UIU\nCQX74DxKjyJRN8usGWgdrSEI1fC9cuh+XwDyqnkfAoGBAI62UYTYhxMaTuQs2fQd\nVCltLAMlrZ/CBwp1ABJH+E+CJ0QrVaHaW7ypWfH3n49Dz3GPoInmQP7h5eE5G1+W\neNAJhmWmXh2AXkYot2P6LNBqKN6WolikAwJQsJ5Rr0AXIZVBI2CsMhPj5UbHyIyE\n7mPvRiVLQyI020j/fi5MnYck\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-p4few@ecommerce-localmart.iam.gserviceaccount.com",
+  "client_id": "101267323371036781396",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-p4few%40ecommerce-localmart.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
