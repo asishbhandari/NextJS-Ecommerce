@@ -20,7 +20,7 @@ export default async function Home() {
       <Navigation />
       <main className="mx-auto">
         <Carousel />
-        <ProductsFeeds products={products}  />
+        <ProductsFeeds  products={products}  />
       </main>
       <footer>footer part</footer>
     </div>

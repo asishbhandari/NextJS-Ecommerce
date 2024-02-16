@@ -9,7 +9,7 @@ import { useSelector } from "react-redux";
 export default function Navigation() {
     const router = useRouter()
     const { data } = useSession();
-    const cartItems = useSelector((state) => state.cart.items)
+    const cartItems = useSelector((state) => state.cart?.items)
 
     return (
         <nav className="flex flex-col mx-auto ">

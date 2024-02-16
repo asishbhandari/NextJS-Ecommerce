@@ -33,10 +33,14 @@ export const cartSlice= createSlice({
             const remainingItems= [...state.items];
             remainingItems.splice(index,1)
             state.items= [...remainingItems];
+        },
+        emptyCartAfterCheckout: (state, action)=>{
+            // storage.removeItem('persist:root')
+            state.items = initialState.items
         }
     }
 })
 
-export const {addToCart, removeFromCart, decrementItemQuantity} = cartSlice.actions;
+export const {addToCart, removeFromCart, decrementItemQuantity, emptyCartAfterCheckout} = cartSlice.actions;
 
 export default cartSlice.reducer;

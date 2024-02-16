@@ -1,9 +1,18 @@
 'use client'
 import Navigation from "@/component/navigation";
+import { emptyCartAfterCheckout } from "@/lib/features/cartSlice";
 import { useRouter } from "next/navigation";
+import { useEffect } from "react";
 import { IoMdCheckmarkCircle } from "react-icons/io";
+import { useDispatch } from "react-redux";
+
 
 export default function success(){
+    const dispatch = useDispatch();
+    useEffect(()=>{
+        console.log("why not")
+        dispatch(emptyCartAfterCheckout())
+    },[])
 
     const router= useRouter();
 

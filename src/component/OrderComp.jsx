@@ -21,7 +21,7 @@ const OrderComp = ({order})=> {
             <div className="p-4 sm:p-10">
                 <div className="flex space-x-6 overflow-x-auto">
                     {order.images.map((image,i) => (
-                        <img src={image} key={i} alt="img" className="h-20 object-contain sm:h-32" />
+                        <img src={image} key={i} alt="img" className="h-20 w-20 object-contain sm:h-32 sm:w-32" />
                     ))}
                 </div>
             </div>
