@@ -22,7 +22,6 @@ export default async function Home() {
         <Carousel />
         <ProductsFeeds  products={products}  />
       </main>
-      <footer>footer part</footer>
     </div>
   );
 }

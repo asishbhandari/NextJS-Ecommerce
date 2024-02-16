@@ -45,21 +45,21 @@ export default function Checkout() {
     return (
         <div className="bg-gray-100">
             <Navigation />
-            <div className="mx-auto h-52 mt-2 lg:h-96 md:h-72">
+            <div className="mx-auto h-40 mt-2 lg:h-96 md:h-72">
                 <img src="/amaprime2.png" alt="primeimage" className="w-full h-full object-contain" />
             </div>
             {
                 cartItems?.length !== 0 ?
                     (
-                        <div className="max-w-screen-2xl mx-auto p-4">
+                        <div className="max-w-screen-2xl mx-auto p-1 md:p-4">
                             <div className="flex w-full text-xl font-bold justify-center border-b-2 border-slate-200 pb-2">Your shopping Cart</div>
                             <div className="flex flex-col md:flex-row w-full">
-                                <div className="w-3/4">
+                                <div className="md:w-3/4 m-3 bg-white p-3">
                                     {
                                         cartItems?.map((item, i) => (
-                                            <div key={i * 20 + 1} className="grid grid-cols-5 bg-white m-3 p-3">
-                                                <img src={item.image} alt={item.title} className="mx-auto object-contain h-52 w-52 my-2" />
-                                                <div className="col-span-3">
+                                            <div key={i * 20 + 1} className="grid grid-cols-5 bg-white ">
+                                                <img src={item.image} alt={item.title} className="me-auto object-contain h-52 w-52 my-2" />
+                                                <div className="col-span-3 px-2">
                                                     <p className="text-lg line-clamp-1 "> {item.title}</p>
                                                     <p className="text-xs text-green-600 mb-0">In Stock</p>
                                                     <p className="text-sm text-gray-500 ">Eligible for FREE shipping</p>
@@ -101,7 +101,7 @@ export default function Checkout() {
                                         ))
                                     }
                                 </div>
-                                <div className="w-1/4 m-3 bg-white p-3 flex flex-col">
+                                <div className="md:w-1/4 m-3 bg-white p-3 flex flex-col">
                                     <div className="flex">
                                         <IoMdCheckmarkCircle className=" text-green-600 w-8 h-8 p-1" />
                                         <div className="flex flex-col">
